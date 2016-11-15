@@ -95,9 +95,22 @@ If you are unable to upgrade your cURL/OpenSSL versions, and if your website can
 
 **Htaccess password protected:**
 
-If your /wp-admin section of your website instance is .htaccess password protected, then you currently have no way to make the queue work.
+If your /wp-admin section of your website is protected with Basic HTTP Authentication, you can use the `algolia_loopback_request_args` filter to add your username and password to the remote calls headers.
 
-We might support this in the future.
+```php
+<?php
+// In your current active theme functions.php.
+define( 'MY_USERNAME', 'test' );
+define( 'MY_PASSWORD', 'test' );
+
+function custom_loopback_request_args( array $request_args ) {
+	$request_args['headers']['Authorization'] = 'Basic ' . base64_encode( MY_USERNAME . ':' . MY_PASSWORD );
+
+	return $request_args;
+}
+
+add_filter( 'algolia_loopback_request_args', 'custom_loopback_request_args' );
+```
 
 **You are using Docker:**
 
@@ -105,7 +118,50 @@ If you are using Docker, you should make sure that the domain name you are using
 
 Port forwarding is currently unsupported, so you should use port 80 or 443 depending on if you are using http or https to access your website.
 
-**My case is not listed here:**
+**Does the instant search results work with IE9?**
+
+The default implementation will break on IE9. You can use the `useHash` option of the instantsearch.js library to enable support for IE9.
+
+See https://github.com/algolia/algoliasearch-wordpress/pull/375 for an example of how to enable IE9 support.
+
+### Can I remove non required thumbnail sizes from the records?
+
+By default the plugin pushes all the thumbnail sizes available so that you can easily switch the displayed format in your frontend integration.
+
+If you want to optimize the records size you can definitely remove non-used sizes.
+
+Let's say you only use `thumbnail` and the `medium` thumbnail sizes, here is how to remove all the others:
+
+```php
+<?php
+
+/**
+ * @param array $shared_attributes
+ *
+ * @return array
+ */
+function vm_post_shared_attributes( array $shared_attributes ) {
+	$keep_sizes = array( 'thumbnail', 'medium' );
+	$images = array();
+	foreach ( $shared_attributes['images'] as $size => $info ) {
+		if ( in_array( $size, $keep_sizes ) ) {
+			$images[$size] = $info;
+		}
+	}
+
+	$shared_attributes['images'] = $images;
+
+	return $shared_attributes;
+}
+
+// Remove the un-necessary sizes from the posts index.
+add_filter( 'algolia_post_shared_attributes', 'vm_post_shared_attributes' );
+
+// Also remove the un-necessary sizes from the searchable posts index.
+add_filter( 'algolia_searchable_post_shared_attributes', 'vm_post_shared_attributes' );
+```
+
+### My case is not listed here, what to do?
 
 If your problem is covered here, please submit an issue with the error details here: https://github.com/algolia/algoliasearch-wordpress/issues
 

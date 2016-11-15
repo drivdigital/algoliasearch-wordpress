@@ -1,4 +1,11 @@
 
+
+ window.onload = function(){
+  if ( navigator.userAgent.indexOf('Safari') != -1 ) {
+    document.body.classList.add('safari')
+  }
+ }
+
 $(function () {
 
     var ACTIONS = {
@@ -73,8 +80,11 @@ $(function () {
         $tweets.find('iframe').contents().find('.EmbeddedTweet').removeClass('js-clickToOpenTarget');
         $tweets.nextAll('.press__tweet--current').find('iframe').contents().find('.EmbeddedTweet').addClass('js-clickToOpenTarget');
     }
-    twttr.ready(function () {
-        Promise.all(loadTweets()).then(removeLoadingClass).then(centerTweets).then(removeClickableTweets);
-    });
-    bindEvents();
+
+    if ("twttr" in window) {
+        twttr.ready(function () {
+            Promise.all(loadTweets()).then(removeLoadingClass).then(centerTweets).then(removeClickableTweets);
+        });
+        bindEvents();
+    }
 });

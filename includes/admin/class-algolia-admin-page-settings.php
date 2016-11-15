@@ -219,6 +219,11 @@ class Algolia_Admin_Page_Settings
 		} catch ( Exception $exception ) {
 			$valid_credentials = false;
 			$this->plugin->get_logger()->log_error( 'Unable to validate credentials.', $exception );
+			add_settings_error(
+				$this->option_group,
+				'login_exception',
+				$exception->getMessage()
+			);
 		}
 
 		if ( ! $valid_credentials ) {
@@ -233,7 +238,7 @@ class Algolia_Admin_Page_Settings
 			);
 			$settings->set_api_is_reachable( false );
 		} else {
-			if ( ! Algolia_API::is_valid_search_api_key( $settings->get_application_id(), $value, $settings->get_search_api_key() ) ) {
+			if ( ! Algolia_API::is_valid_search_api_key( $settings->get_application_id(), $settings->get_search_api_key() ) ) {
 				add_settings_error(
 					$this->option_group,
 					'wrong_search_API_key',

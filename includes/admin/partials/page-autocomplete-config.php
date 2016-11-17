@@ -1,3 +1,4 @@
+<?php $settings = drivAlgolia::get_current_settings(); ?>
 <table class="widefat table-autocomplete">
 	<thead>
 		<tr>
@@ -5,6 +6,8 @@
 			<th><?php _e( 'Index', 'algolia' ); ?></th>
 			<th><?php _e( 'Max. Suggestions', 'algolia' ); ?></th>
 			<th><?php _e( 'Position', 'algolia' ); ?></th>
+			<th><?php _e( 'Default View', 'algolia' ); ?></th>
+			<th><?php _e( 'Default Empty View', 'algolia' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -22,6 +25,24 @@
 			<td>
 				<input type="number" name="algolia_autocomplete_config[<?php echo esc_attr( $index['index_id'] ); ?>][position]"  value="<?php echo (int) $index['position']; ?>" />
 			</td>
+			<td>
+				<?php if ($index['index_id'] == 'posts_product') { ?>
+                    <select name="driv_algolia_settings[<?php echo esc_attr( $index['index_id'] ); ?>][view]" style="display: block; width: 100%;">
+                        <?php foreach (['list'=> __('List', 'driv_algolia'), 'grid'=> __('Grid', 'driv_algolia')] as $value => $label) { ?>
+                            <option value="<?php echo $value; ?>"<?php if ($value==$settings[$index['index_id']]['view']) { echo ' selected="selected"'; } ?>><?php echo $label; ?></option>
+                        <?php } ?>
+                    </select>
+                <?php } else { ?>
+                    <input type="hidden" name="driv_algolia_settings[<?php echo esc_attr( $index['index_id'] ); ?>][view]" value="list" />
+                <?php } ?>
+            </td>
+            <td>
+                <select name="driv_algolia_settings[<?php echo esc_attr( $index['index_id'] ); ?>][empty_view]" value="<?php echo $settings[$index['index_id']]['empty_view']; ?>" style="display: block; width: 100%;">
+                    <?php foreach (['none'=> __('None', 'driv_algolia'), 'product'=> __('No Products Found', 'driv_algolia')] as $value => $label) { ?>
+                        <option value="<?php echo $value; ?>"<?php if ($value==$settings[$index['index_id']]['empty_view']) { echo ' selected="selected"'; } ?>><?php echo $label; ?></option>
+                    <?php } ?>
+                </select>
+            </td>
 		</tr>
 		<?php endforeach; ?>
 		<?php if ( empty( $indices ) ) : ?>

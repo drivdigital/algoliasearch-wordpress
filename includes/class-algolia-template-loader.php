@@ -27,7 +27,7 @@ class Algolia_Template_Loader {
 			add_filter( 'wp_footer', array( $this, 'load_autocomplete_template' ) );
 		}
 	}
-	
+
 	public function load_algolia_config() {
 		$settings = $this->plugin->get_settings();
 		$autocomplete_config = $this->plugin->get_autocomplete_config();
@@ -56,7 +56,7 @@ class Algolia_Template_Loader {
 
 		echo '<script type="text/javascript">var algolia = ' . $json_config . '</script>';
 	}
-	
+
 	private function should_load_autocomplete() {
 		$settings = $this->plugin->get_settings();
 		$autocomplete = $this->plugin->get_autocomplete_config();
@@ -93,6 +93,10 @@ class Algolia_Template_Loader {
 
 		// Lib useful for positioning the autocomplete.js dropdown.
 		wp_enqueue_script( 'tether' );
+
+		// Kepp the products equal height
+		wp_enqueue_script( 'equaliser' );
+		wp_enqueue_script( 'equaliser-elements' );
 
 		// Allow users to easily enqueue custom styles and scripts.
 		do_action( 'algolia_autocomplete_scripts' );
@@ -163,7 +167,7 @@ class Algolia_Template_Loader {
 		if ( 'algolia/' !== $templates_path ) {
 			$locations[] = 'algolia/' . $file;
 		}
-		
+
 		$locations[] = $templates_path . $file;
 
 		$locations = (array) apply_filters( 'algolia_template_locations', $locations, $file );

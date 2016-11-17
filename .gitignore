@@ -2,3 +2,4 @@ node_modules
 dist
 composer.lock
 .idea
+.sass-cache

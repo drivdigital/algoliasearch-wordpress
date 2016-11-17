@@ -26,6 +26,12 @@
     "instantsearch.js": "^1.8.8"
   },
   "devDependencies": {
-    "tachyons": "^4.5.1"
+    "tachyons"              : "^4.5.1",
+    "autoprefixer"          : "latest",
+    "grunt"                 : "latest",
+    "grunt-contrib-sass"    : "latest",
+    "grunt-postcss"         : "latest",
+    "grunt-contrib-watch"   : "latest",
+    "jit-grunt"             : "^0.10.0"
   }
 }

@@ -92,6 +92,7 @@ class Algolia_Admin_Page_Autocomplete
 
 		register_setting( $this->option_group, 'algolia_autocomplete_enabled', array( $this, 'sanitize_autocomplete_enabled' ) );
 		register_setting( $this->option_group, 'algolia_autocomplete_config', array( $this, 'sanitize_autocomplete_config' ) );
+		register_setting( $this->option_group, 'driv_algolia_settings' );
 	}
 
 	/**

@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alicia Harris <alicia@drivdigital.no>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nb_NO\n"
+"X-Generator: Poedit 1.8.7\n"
+
+# Produkter
+msgid "No Products Found"
+msgstr "Ingen produkter funnet"
+
+msgid "Try to edit your search term to find what you are looking for."
+msgstr "Prøv å justere søkeordet for å finne det du leter etter."
+
+msgid "Results for"
+msgstr "Treff på"
+
+msgid "Index Name"
+msgstr "Index Name"
+
+msgid "Default Results View"
+msgstr "Default Results View"
+
+msgid "Empty View"
+msgstr "Empty View"
+
+msgid "List"
+msgstr "List"
+
+msgid "Grid"
+msgstr "Grid"
+
+msgid "None"
+msgstr "None"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="194px" height="199px" viewBox="0 0 194 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>glyph-search-header</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.05">
+        <g id="D---Search-results---No-results" transform="translate(-321.000000, -340.000000)" fill="#222222">
+            <g id="search-overlay" transform="translate(0.000000, 66.000000)">
+                <g id="main" transform="translate(96.000000, 127.000000)">
+                    <g id="no-results" transform="translate(0.000000, 1.000000)">
+                        <g id="Group-12" transform="translate(0.000000, 53.000000)">
+                            <path d="M350.611859,238.831146 C337.672078,247.844888 321.941183,253.130102 304.97586,253.130102 C260.828929,253.130102 225.040771,217.341944 225.040771,173.195014 C225.040771,129.048083 260.828929,93.2599248 304.97586,93.2599248 C349.12279,93.2599248 384.910948,129.048083 384.910948,173.195014 C384.910948,192.135675 378.323328,209.537714 367.314293,223.234926 L419.040771,274.961404 L402.891444,291.11073 L350.611859,238.831146 Z M304.97586,230.291506 C336.509381,230.291506 362.072352,204.728535 362.072352,173.195014 C362.072352,141.661492 336.509381,116.098522 304.97586,116.098522 C273.442338,116.098522 247.879368,141.661492 247.879368,173.195014 C247.879368,204.728535 273.442338,230.291506 304.97586,230.291506 Z" id="glyph-search-header"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -74,3 +74,6 @@ if ( defined('WP_CLI') && WP_CLI ) {
 	include ALGOLIA_PATH . '/includes/class-algolia-cli.php';
 	WP_CLI::add_command( 'algolia', new Algolia_CLI() );
 }
+
+include(dirname(__FILE__) . '/includes/class-driv-algolia.php');
+

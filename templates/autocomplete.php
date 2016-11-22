@@ -10,14 +10,15 @@
     <#
     var gridlist = "";
     jQuery(data.wrapperClass).addClass(data.view);
-    if (data.label == "Produkter") {
+    console.log(data.postType);
+    if (data.postType === "product") {
         if (data.view=='grid') {
             jQuery("body").addClass("algoliasearch-grid");
         } else {
             jQuery("body").removeClass("algoliasearch-grid");
         }
     }
-    if(data.label == "Produkter" && data.count != 0) {
+    if(data.postType === "product" && data.count != 0) {
         gridlist = '<div class="wrapper-toggle-view-buttons"><div class="button-list-view ' + ((data.view=='list') ? 'active' : '') + '"><img class="active" src="/wp-content/plugins/algolia/assets/img/list-icon-active.svg"><img class="not-active" src="/wp-content/plugins/algolia/assets/img/list-icon-not-active.svg"></div><div class="button-grid-view ' + ((data.view=='grid') ? 'active' : '') + '"><img class="active" src="/wp-content/plugins/algolia/assets/img/grid-icon-active.svg"><img class="not-active" src="/wp-content/plugins/algolia/assets/img/grid-icon-not-active.svg"></div></div>';
     }
 #>
@@ -162,11 +163,13 @@
                         type = config['index_id'].replace('posts_', '').replace('terms_', '');
                         moreUrl = (parseInt(args.nbHits) > parseInt(args.hitsPerPage)) ? '/?s=' + query.query + '&post_types=' + type : '';
                         view = getDefaultAlgoliaSuggestionView(config['index_id']);
+                        postType = (args.nbHits>0 && typeof args.hits[0].post_type !== 'undefined') ? args.hits[0].post_type : false;
                         return wp.template('autocomplete-header')({
                             label: config['label'],
                             count: args.nbHits,
                             moreUrl: moreUrl,
                             view: view,
+                            postType: postType,
                             wrapperClass: '.aa-dataset-' + i,
                         });
                     },

@@ -37,4 +37,10 @@ msgid "Grid"
 msgstr "Grid"
 
 msgid "None"
-msgstr "None"
+msgstr "Ingen"
+
+msgid "View More"
+msgstr "Se flere"
+
+msgid "View More Products"
+msgstr "Se flere produkter"

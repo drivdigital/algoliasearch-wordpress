@@ -5,11 +5,23 @@ class drivAlgolia {
     static $textdomain = 'driv_algolia';
     static $settingsKey = 'driv_algolia_settings';
     static $settings = false;
+    static $blacklistedPostTypes = [
+        'advert',
+        'nav_discount',
+        'soma_discount',
+        'acf-field-group',
+        'acf-field',
+        'shop_order',
+        'shop_order_refund',
+        'shop_coupon',
+        'shop_webhook',
+    ];
 
     public function __construct()
     {
         add_action( 'plugins_loaded',                               'drivAlgolia::load_textdomain' );
         add_filter( 'posts_orderby_request',                        'drivAlgolia::products_first_on_search', 10, 2);
+        add_filter( 'algolia_post_types_blacklist',                 'drivAlgolia::modify_post_types_blacklist', 10, 1);
     }
 
     static function set_settings_array()
@@ -44,7 +56,7 @@ class drivAlgolia {
     {
         global $wpdb;
 
-        if (!empty($query->query_vars['s'])) {
+        if (!empty($query->query_vars['s']) && !is_admin()) {
             // compose order by clause to hoist products above other post types
             $products_first = "IF({$wpdb->posts}.post_type = 'product', 0, 1)";
             // insert clause at front of existing order by clause
@@ -52,6 +64,11 @@ class drivAlgolia {
         }
 
         return $order_by;
+    }
+
+    static function modify_post_types_blacklist($types)
+    {
+        return array_merge($types, self::$blacklistedPostTypes);
     }
 
     public static function get_current_settings($indices=null)

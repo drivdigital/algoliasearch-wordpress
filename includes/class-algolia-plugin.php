@@ -233,6 +233,11 @@ class Algolia_Plugin {
 		// JS.
 		wp_register_script( 'algolia-search', plugin_dir_url( __FILE__ ) . '../assets/js/algoliasearch/algoliasearch.jquery'.$suffix.'.js', array( 'jquery' ), ALGOLIA_VERSION );
 		wp_register_script( 'algolia-autocomplete', plugin_dir_url( __FILE__ ) . '../assets/js/autocomplete.js/autocomplete.min.js', array(), ALGOLIA_VERSION );
+		$translations = array(
+			'moreResults' => __('View More', 'driv_algolia'),
+			'moreProducts' => __('View More Products', 'driv_algolia'),
+		);
+		wp_localize_script('algolia-autocomplete', 'drivAlgoliaText', $translations);
 		wp_register_script( 'algolia-instantsearch', plugin_dir_url( __FILE__ ) . '../assets/js/instantsearch.js/instantsearch-preact'.$suffix.'.js', array(), ALGOLIA_VERSION );
 
 		// Vendor JS.

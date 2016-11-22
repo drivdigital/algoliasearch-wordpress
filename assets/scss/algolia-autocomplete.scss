@@ -1,9 +1,13 @@
 /* This plugin uses 'dataset' as the class for everything
 so these variables help show which class is what thing */
 
-$products: '.aa-dropdown-menu-inner > [class^="aa-dataset"]';
-$posts: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:first-of-type';
-$tags: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"] ~ [class^="aa-dataset"]';
+// $products: '.aa-dropdown-menu-inner > [class^="aa-dataset"]';
+// $posts: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:first-of-type';
+// $tags: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"] ~ [class^="aa-dataset"]';
+
+$products: '[class*="dataset"].product';
+$posts: '[class*="dataset"].post';
+$tags: '[class*="dataset"]:not(.product):not(.post)';
 
 // table radius for the tables listing products and posts
 $table-radius: 0.25rem;
@@ -750,15 +754,21 @@ body .thinner {
   .button-more-products {
       position: absolute;
       z-index: 10;
-      bottom: 1.5em;
-      left: 25%;
-      width: 50%
+      bottom: 0.5em;
+      left: 29%;
+      width: 50%;
+      // button width and button positioning in mobile and tablet
+      @media only screen and (max-width: 1029px) {
+        width: 62%;
+        left: 18%;
+        bottom: -0.5em;
+      }
   }
   @media only screen and (max-width: 1029px) {
     position: absolute;
     z-index: 10;
     bottom: 1.5em;
-    left: 10%;
+    // left: 10%;
     width: 80%;
   }
 }

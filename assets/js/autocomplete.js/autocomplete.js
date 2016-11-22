@@ -3365,11 +3365,11 @@ return /******/ (function(modules) { // webpackBootstrap
                 if(typeof renderArgs[0].hits[0].post_type !== 'undefined' && renderArgs[0].hits[0].post_type == 'product') {
                     this.$el.addClass('fadedBottom');
                     if (typeof moreUrl !== 'undefined') {
-                      this.$el.append('<a class="button-more-products" href="' + moreUrl + '">Se flere produkter &#187;</a>');
+                      this.$el.append('<a class="button-more-products" href="' + moreUrl + '">' + drivAlgoliaText.moreProducts + ' &#187;</a>');
                     }
                 } else {
                     if (typeof moreUrl !== 'undefined') {
-                      this.$el.append('<a class="button-more-products" href="' + moreUrl + '">Se flere &#187;</a>');
+                      this.$el.append('<a class="button-more-products" href="' + moreUrl + '">' + drivAlgoliaText.moreResults + ' &#187;</a>');
                     }
                 }
             } else {

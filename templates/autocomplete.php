@@ -10,7 +10,7 @@
     <#
     var gridlist = "";
     jQuery(data.wrapperClass).addClass(data.view);
-    console.log(data.postType);
+    <!-- console.log(data.postType); -->
     if (data.postType === "product") {
         if (data.view=='grid') {
             jQuery("body").addClass("algoliasearch-grid");
@@ -221,16 +221,10 @@
 
             var config = {
                 element: $menu,
-                target: $searchInput,
-                attachment: 'top',
+                target: this,
+                attachment: 'top left',
                 targetAttachment: 'bottom left',
                 offset: '-25px 0px',
-                constraints: [
-                {
-                    to: 'window',
-                    attachment: 'none element'
-                }
-                ]
             };
 
             /* This will make sure the dropdown is no longer part of the same container as */

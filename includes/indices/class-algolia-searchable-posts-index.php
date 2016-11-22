@@ -95,7 +95,8 @@ final class Algolia_Searchable_Posts_Index extends Algolia_Index
 	private function get_post_records( WP_Post $post ) {
 		$shared_attributes = $this->get_post_shared_attributes( $post );
 
-		$post_content = apply_filters( 'the_content', $post->post_content );
+		$post_content = apply_filters( 'driv_modify_content_before_indexing', $post->post_content );
+		$post_content = apply_filters( 'the_content', $post_content );
 
 		$parser = new \Algolia\DOMParser();
 

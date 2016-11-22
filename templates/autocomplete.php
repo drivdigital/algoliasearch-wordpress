@@ -220,11 +220,10 @@
             var $menu = $autocomplete.find('.aa-dropdown-menu');
 
             var config = {
-                element: $menu,
-                target: this,
-                attachment: 'top left',
-                targetAttachment: 'bottom left',
-                offset: '-25px 0px',
+              element: $menu,
+              target: this,
+              attachment: 'top left',
+              targetAttachment: 'bottom left',
             };
 
             /* This will make sure the dropdown is no longer part of the same container as */

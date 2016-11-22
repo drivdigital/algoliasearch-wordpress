@@ -1,15 +1,57 @@
 /* This plugin uses 'dataset' as the class for everything
 so these variables help show which class is what thing */
-[class*="dataset"].product, [class*="dataset"].post, [class*="dataset"]:not(.product):not(.post) {
+/**
+ * Mixins
+ */
+[class*="-dataset"],
+.aa-dropdown-menu-inner {
   *zoom: 1; }
-  [class*="dataset"].product:before, [class*="dataset"].product:after, [class*="dataset"].post:before, [class*="dataset"].post:after, [class*="dataset"]:not(.product):not(.post):before, [class*="dataset"]:not(.product):not(.post):after {
+  [class*="-dataset"]:before, [class*="-dataset"]:after,
+  .aa-dropdown-menu-inner:before,
+  .aa-dropdown-menu-inner:after {
     content: " ";
     display: table; }
-  [class*="dataset"].product:after, [class*="dataset"].post:after, [class*="dataset"]:not(.product):not(.post):after {
+  [class*="-dataset"]:after,
+  .aa-dropdown-menu-inner:after {
     clear: both; }
-  [class*="dataset"].product p, [class*="dataset"].product h2, [class*="dataset"].product em, [class*="dataset"].post p, [class*="dataset"].post h2, [class*="dataset"].post em, [class*="dataset"]:not(.product):not(.post) p, [class*="dataset"]:not(.product):not(.post) h2, [class*="dataset"]:not(.product):not(.post) em {
+  [class*="-dataset"] p, [class*="-dataset"] h2, [class*="-dataset"] em,
+  .aa-dropdown-menu-inner p,
+  .aa-dropdown-menu-inner h2,
+  .aa-dropdown-menu-inner em {
     font-size: 0.875rem;
     line-height: 140%; }
+
+/* Layout */
+.aa-dropdown-menu-inner > [class^="aa-dataset"] {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .aa-dropdown-menu-inner > [class^="aa-dataset"] {
+      width: 48%;
+      width: calc(49.98889% - 0.75rem);
+      float: left;
+      margin-right: 2%;
+      margin-right: calc(1.5rem); } }
+
+.r-wrapper {
+  width: 100%; }
+  @media (min-width: 768px) {
+    .r-wrapper {
+      width: 48%;
+      width: calc(49.98889% - 0.75rem);
+      float: left; } }
+
+/* Type styles */
+.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) div.aa-suggestion {
+  background-color: #eaeaea;
+  float: left;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  padding: 0.5rem;
+  margin: 0 0.5rem 0 0;
+  border-radius: 1.25rem; }
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) div.aa-suggestion:hover {
+    background-color: #e2e2e2; }
 
 .wrapper-toggle-view-buttons {
   display: block;
@@ -63,57 +105,51 @@ so these variables help show which class is what thing */
   margin: 1rem 1rem 1rem 0;
   display: inline-block; }
 
-[class*="dataset"].product {
-  width: 100%; }
-  [class*="dataset"].product .aa-suggestion:first-of-type {
-    border-top: 1px solid #eaeaea; }
-  [class*="dataset"].product .aa-suggestions .aa-suggestion {
-    padding-bottom: 0.5rem; }
-  [class*="dataset"].product .suggestion-link {
-    display: block;
-    padding: 0 14px 0 0; }
-  [class*="dataset"].product .suggestion-post-price {
-    margin-top: 0.5rem; }
-  [class*="dataset"].product .amount {
-    font-size: 1.0625rem; }
-  [class*="dataset"].product .button-more-products {
-    text-align: center !important; }
-  @media only screen and (min-width: 1030px) {
-    [class*="dataset"].product {
-      width: 50%;
-      float: left;
-      padding: 0.5rem; }
-      [class*="dataset"].product .aa-suggestions {
-        border: 1px #eaeaea solid;
-        border-radius: 0.25rem; }
-      [class*="dataset"].product .aa-suggestion:hover {
-        background-color: #f8f8f8; }
-      [class*="dataset"].product .aa-suggestion:first-of-type {
-        border-top-left-radius: 0.25rem;
-        border-top-right-radius: 0.25rem;
-        border-top: none; }
-      [class*="dataset"].product .aa-suggestion:last-of-type {
-        border-bottom: none;
-        border-bottom-left-radius: 0.25rem;
-        border-bottom-right-radius: 0.25rem; }
-      [class*="dataset"].product .autocomplete-header {
-        margin-left: 0; } }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestion:first-of-type {
+  border-top: 1px solid #eaeaea; }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion {
+  padding-bottom: 0.5rem; }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .suggestion-link {
+  display: block;
+  padding: 0 14px 0 0; }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .suggestion-post-price {
+  margin-top: 0.5rem; }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .amount {
+  font-size: 1.0625rem; }
+.aa-dropdown-menu-inner > [class^="aa-dataset"] .button-more-products {
+  text-align: center !important; }
+@media only screen and (min-width: 1030px) {
+  .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions {
+    border: 1px #eaeaea solid;
+    border-radius: 0.25rem; }
+  .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestion:hover {
+    background-color: #f8f8f8; }
+  .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestion:first-of-type {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-top: none; }
+  .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestion:last-of-type {
+    border-bottom: none;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem; }
+  .aa-dropdown-menu-inner > [class^="aa-dataset"] .autocomplete-header {
+    margin-left: 0; } }
 
-.algoliasearch-grid [class*="dataset"].product .aa-suggestions {
+.algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions {
   *zoom: 1;
   border: 1px solid #eaeaea;
   border-radius: 0.25rem;
   width: 91%;
   margin: 0 auto; }
-  .algoliasearch-grid [class*="dataset"].product .aa-suggestions:before, .algoliasearch-grid [class*="dataset"].product .aa-suggestions:after {
+  .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions:before, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions:after {
     content: " ";
     display: table; }
-  .algoliasearch-grid [class*="dataset"].product .aa-suggestions:after {
+  .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions:after {
     clear: both; }
   @media (min-width: 1030px) {
-    .algoliasearch-grid [class*="dataset"].product .aa-suggestions {
+    .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions {
       width: 100%; } }
-  .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion {
+  .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion {
     width: 50%;
     float: left;
     display: block;
@@ -121,12 +157,12 @@ so these variables help show which class is what thing */
     border-radius: 0;
     border-bottom: 1px solid #eaeaea;
     border-right: 1px solid #eaeaea; }
-    .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion .suggestion-link {
+    .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion .suggestion-link {
       padding: 0;
       width: 100%;
       display: block; }
-    .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion .suggestion-post-thumbnail,
-    .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion .suggestion-post-attributes {
+    .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion .suggestion-post-thumbnail,
+    .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion .suggestion-post-attributes {
       border: 0;
       padding: 0;
       margin: 0;
@@ -138,126 +174,118 @@ so these variables help show which class is what thing */
       -o-object-fit: contain;
          object-fit: contain; }
     @media (max-width: 1029px) {
-      .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion {
+      .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion {
         height: 17rem; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion .autocomplete-header {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion .autocomplete-header {
           margin-left: 1rem; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion .suggestion-post-thumbnail {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion .suggestion-post-thumbnail {
           height: 10rem;
           -o-object-fit: contain;
              object-fit: contain; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:only-child {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:only-child {
           border-bottom: 0;
           border-top: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:first-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-of-type(3n+4) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:first-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-of-type(3n+4) {
           clear: left; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-of-type(2n+2) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-of-type(2n+2) {
           border-right: none;
           clear: right; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:nth-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:nth-child(2) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:nth-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:nth-child(2) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child {
           border-top: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:first-child {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:first-child {
           border-top: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(3), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(3) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(3), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(3) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(4), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(3), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(4), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(3) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(4), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(3), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(4), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(3) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:first-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:first-of-type {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:first-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:first-of-type {
           border-top: none; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:first-child {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:first-child {
           border-top: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:nth-child(5), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:nth-child(5) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:nth-child(5), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:nth-child(5) {
           border-bottom: 0; } }
     @media (min-width: 1030px) {
-      .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion {
+      .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion {
         width: 33%;
         min-height: 17rem;
         /* ELEMENT COUNTING FOR SORTING OUT BORDERS */ }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:only-child {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:only-child {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:first-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-of-type(3n+4) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:first-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-of-type(3n+4) {
           clear: left; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-of-type(3n+3) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-of-type(3n+3) {
           border-right: none;
           clear: right; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:nth-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:nth-child(2) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child:nth-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(2):first-child ~ *:nth-child(2) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(3), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:first-child, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(3) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child:nth-child(3), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:first-child, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(3):first-child ~ *:nth-child(3) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(4), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(4) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child:nth-child(4), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(4):first-child ~ *:nth-child(4) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:last-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:nth-last-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:last-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:nth-last-child(2) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:last-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child:nth-last-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:last-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(5):first-child ~ *:nth-last-child(2) {
           border-bottom: 0; }
-        .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:last-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:nth-last-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:nth-last-child(3), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:last-of-type, .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:nth-last-child(2), .algoliasearch-grid [class*="dataset"].product .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:nth-last-child(3) {
+        .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:last-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:nth-last-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child:nth-last-child(3), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:last-of-type, .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:nth-last-child(2), .algoliasearch-grid .aa-dropdown-menu-inner > [class^="aa-dataset"] .aa-suggestions .aa-suggestion:nth-last-child(6):first-child ~ *:nth-last-child(3) {
           border-bottom: 0; } }
 
-[class*="dataset"].post {
+.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post {
   width: 100%; }
-  [class*="dataset"].post .button-more-products {
+  @media only screen and (min-width: 1030px) {
+    .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post {
+      width: 100%;
+      float: left;
+      padding: 0.5rem; } }
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .button-more-products {
     display: none !important; }
-  [class*="dataset"].post .aa-suggestions {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestions {
     background-color: #f8f8f8;
     border: 1px #eaeaea solid;
     border-radius: 0.25rem; }
-    [class*="dataset"].post .aa-suggestions .aa-suggestion:hover {
+    .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestions .aa-suggestion:hover {
       background-color: #e2e2e2; }
-  [class*="dataset"].post .aa-suggestion:first-of-type {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestion:first-of-type {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; }
-  [class*="dataset"].post .aa-suggestion:last-of-type {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestion:last-of-type {
     border-bottom: none;
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem; }
-  [class*="dataset"].post .autocomplete-header {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .autocomplete-header {
     margin-left: 0; }
-  [class*="dataset"].post .suggestion-link {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .suggestion-link {
     display: block;
     padding: 0 0.15rem 0 0; }
-  [class*="dataset"].post .suggestion-post-thumbnail {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .suggestion-post-thumbnail {
     display: none; }
-  [class*="dataset"].post .aa-suggestions h2 {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestions h2 {
     font-weight: normal; }
-  [class*="dataset"].post .aa-suggestions .aa-suggestion {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestions .aa-suggestion {
     padding: 1.5rem 1.25rem 1.5rem 1.25rem; }
+
+.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) {
+  width: 100%; }
   @media only screen and (min-width: 1030px) {
-    [class*="dataset"].post {
+    .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) {
       width: 100%;
       float: left;
       padding: 0.5rem; } }
-
-[class*="dataset"]:not(.product):not(.post) {
-  width: 100%; }
-  [class*="dataset"]:not(.product):not(.post) .aa-suggestion:first-of-type,
-  [class*="dataset"]:not(.product):not(.post) .aa-suggestion {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion:first-of-type,
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion {
     border: 0px; }
-  [class*="dataset"]:not(.product):not(.post) .aa-suggestion.aa-cursor {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion.aa-cursor {
     background-color: transparent; }
-  [class*="dataset"]:not(.product):not(.post) .aa-suggestions .aa-suggestion {
-    display: inline-block;
-    border: none;
-    padding: 0;
-    float: left; }
-  [class*="dataset"]:not(.product):not(.post) .button-more-products {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .button-more-products {
     float: left;
-    padding: 0.45rem 0.75rem;
+    padding: 0.75rem 1rem;
     font-size: 0.875rem;
     line-height: 140%;
     margin-top: 0; }
-  @media only screen and (min-width: 1030px) {
-    [class*="dataset"]:not(.product):not(.post) {
-      width: 100%;
-      float: left;
-      padding: 0.5rem; } }
-  [class*="dataset"]:not(.product):not(.post) .autocomplete-header {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .autocomplete-header {
     margin-left: 0; }
-  [class*="dataset"]:not(.product):not(.post) .wrapper-suggestion-link .suggestion-link {
+  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .wrapper-suggestion-link .suggestion-link {
     padding: 0.25rem 0.5rem;
     display: block; }
-  [class*="dataset"]:not(.product):not(.post) .wrapper-suggestion-link {
-    padding: 0.15rem 0.5rem 0.25rem 0.5rem;
-    margin-bottom: 0.75rem; }
 
 .title-element {
   text-transform: lowercase; }
@@ -271,8 +299,6 @@ so these variables help show which class is what thing */
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35); }
-  .aa-dropdown-menu .test {
-    color: black; }
 
 .aa-dropdown-menu {
   width: 96% !important;
@@ -280,10 +306,13 @@ so these variables help show which class is what thing */
   /* Stay in place */
   background-color: #fff;
   overflow-x: hidden; }
+  @media (max-width: 460px) {
+    .aa-dropdown-menu {
+      width: calc(100% - 2rem) !important; } }
 
 .aa-dropdown-menu-inner {
   width: 100%;
-  max-width: 1240px;
+  padding: 1rem;
   margin-left: auto;
   margin-right: auto;
   border: 0px !important;
@@ -430,15 +459,6 @@ body .thinner {
   font-weight: bold;
   color: #333333; }
 
-.wrapper-suggestion-link {
-  background-color: #eaeaea;
-  padding: 0.5rem;
-  border-radius: 1.25rem;
-  margin: 0 0.5rem 0 0;
-  display: inline-block; }
-  .wrapper-suggestion-link:hover {
-    background-color: #e2e2e2; }
-
 .suggestion-post-content {
   margin-bottom: 0; }
 
@@ -453,27 +473,6 @@ body .thinner {
 .wrapper-autocomplete-post-suggestion {
   background-color: #eaeaea; }
 
-/* For mobile phones and tablets only */
-@media only screen and (max-width: 1029px) {
-  .aa-dropdown-menu {
-    min-width: inherit;
-    max-width: inherit;
-    width: 70%; }
-
-  .r-wrapper {
-    float: none;
-    margin: 0 1rem 1rem 1rem; } }
-/* Media query for desktop */
-@media only screen and (min-width: 1030px) {
-  [class*="dataset"].product .aa-suggestions {
-    width: 100%; }
-
-  .r-wrapper {
-    float: left;
-    width: 50%; }
-
-  .aa-dropdown-menu .autocomplete-header {
-    margin-left: 0; } }
 .searchsubmit.closeable {
   background-image: url("../img/search-close.png");
   background-image: url("../img/search-close.svg"); }
@@ -507,19 +506,17 @@ body .thinner {
 .fadedBottom .button-more-products {
   position: absolute;
   z-index: 10;
-  bottom: 0.5em;
+  bottom: 0;
   left: 29%;
   width: 50%; }
   @media only screen and (max-width: 1029px) {
     .fadedBottom .button-more-products {
       width: 62%;
-      left: 18%;
-      bottom: -0.5em; } }
+      left: 18%; } }
 @media only screen and (max-width: 1029px) {
   .fadedBottom {
     position: absolute;
     z-index: 10;
-    bottom: 1.5em;
     width: 80%; } }
 
 /*# sourceMappingURL=algolia-autocomplete.css.map */

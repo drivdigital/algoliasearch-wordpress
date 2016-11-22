@@ -1,26 +1,108 @@
 /* This plugin uses 'dataset' as the class for everything
 so these variables help show which class is what thing */
 
-// $products: '.aa-dropdown-menu-inner > [class^="aa-dataset"]';
-// $posts: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:first-of-type';
-// $tags: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"] ~ [class^="aa-dataset"]';
+// Always set to products
+$first_column: '.aa-dropdown-menu-inner > [class^="aa-dataset"]';
 
-$products: '[class*="dataset"].product';
-$posts: '[class*="dataset"].post';
-$tags: '[class*="dataset"]:not(.product):not(.post)';
+// Products, tags & posts
+$products: 'a.suggestion-link.product';
+$posts: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post';
+$tags: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post)';
+
+
+/**
+ * Mixins
+ */
+// Mixin to count how many elements there are, then do css
+// when these requirements are met.
+@mixin element-count( $number, $comparison: 'equal' ) { $nth: '';
+  @if index( ('greater' 'more' '>'), $comparison ) { $nth: 'n + #{$number}'; }
+  @else if index( ('less' 'fewer' '<'), $comparison ) { $nth: '-n + #{$number}'; }
+  @else if index( ('equal' 'same' '='), $comparison ) { $nth: $number; }
+  @else { @warn "Sorry, that's an invalid $comparison value." }
+  &:nth-last-child(#{$nth}):first-child { &, & ~ * { @content; } }
+}
+
+// Grid mixin for easier column based grid
+@mixin span( $i, $max: 12, $guttering: 1.875rem, $last: null){
+  $percentage: $i * 100% / $max;
+  width: $percentage - 2%;
+  $percentage: $percentage - 0.01111%;
+  $num: $max / $i - 1;
+  $margin-right: ($num * $guttering / ($num +1));
+  width: calc(#{$percentage} - #{$margin-right});
+  float: left;
+  @if $last == null {
+    margin-right: 2%;
+    margin-right: calc(#{$guttering});
+  }
+}
+
+@mixin clearfix() {
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+  *zoom: 1;
+}
 
 // table radius for the tables listing products and posts
 $table-radius: 0.25rem;
 $border-color: #eaeaea;
 
 // clearfix the datasets and set the font size for all search results
-#{$products}, #{$posts}, #{$tags} {
-  &:before, &:after { content: " "; display: table; }
-  &:after { clear: both; }
-  *zoom: 1;
+[class*="-dataset"],
+.aa-dropdown-menu-inner {
+  @include clearfix;
+  // Font sizes
   p, h2, em {
     font-size: 0.875rem;
     line-height: 140%;
+  }
+}
+
+
+/* Layout */
+
+#{$first_column} {
+  width: 100%;
+  @media ( min-width: 768px ) {
+    @include span( 6, 12, 1.5rem );
+  }
+}
+
+.r-wrapper{
+  width: 100%;
+  @media ( min-width: 768px ) {
+    @include span( 6, 12, 1.5rem, $last:true );
+  }
+}
+
+/* Type styles */
+
+// Products
+#{$first_column} > div.aa-suggestion {
+
+}
+
+// Posts
+#{$posts}{
+
+}
+
+// Tags
+#{$tags} {
+  div.aa-suggestion{
+    background-color: #eaeaea;
+    float: left;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    padding: 0.5rem;
+    margin: 0 0.5rem 0 0;
+    border-radius: 1.25rem;
+
+    &:hover {
+      background-color: darken( #eaeaea, 3% );
+    }
   }
 }
 
@@ -87,8 +169,8 @@ $border-color: #eaeaea;
   display: inline-block;
 }
 
-#{$products} {
-  width: 100%;
+#{$first_column} {
+
   .aa-suggestion:first-of-type {
     border-top:1px solid $border-color;
   }
@@ -112,9 +194,7 @@ $border-color: #eaeaea;
 
     // Media query for desktop
     @media only screen and (min-width: 1030px) {
-      width: 50%;
-      float: left;
-      padding: 0.5rem;
+
       .aa-suggestions {
         border: 1px $border-color solid;
         border-radius: $table-radius;
@@ -138,19 +218,8 @@ $border-color: #eaeaea;
     }
   }
 
-  // Mixin to count how many elements there are, then do css
-  // when these requirements are met.
-  @mixin element-count( $number, $comparison: 'equal' ) { $nth: '';
-    @if index( ('greater' 'more' '>'), $comparison ) { $nth: 'n + #{$number}'; }
-    @else if index( ('less' 'fewer' '<'), $comparison ) { $nth: '-n + #{$number}'; }
-    @else if index( ('equal' 'same' '='), $comparison ) { $nth: $number; }
-    @else { @warn "Sorry, that's an invalid $comparison value." }
-    &:nth-last-child(#{$nth}):first-child { &, & ~ * { @content; } }
-  }
-
-
 // Grid view
-.algoliasearch-grid #{$products} {
+.algoliasearch-grid #{$first_column} {
   .aa-suggestions {
     &:before, &:after { content: " "; display: table; }
     &:after { clear: both; }
@@ -324,6 +393,13 @@ $border-color: #eaeaea;
 
 #{$posts} {
   width: 100%;
+  // Desktop styles
+  @media only screen and (min-width: 1030px) {
+    width: 100%;
+    float: left;
+    padding: 0.5rem;
+  }
+
   .button-more-products {
     display: none !important;
   }
@@ -363,16 +439,17 @@ $border-color: #eaeaea;
   .aa-suggestions .aa-suggestion {
     padding: 1.5rem 1.25rem 1.5rem 1.25rem;
   }
-  // Media query for desktop
-  @media only screen and (min-width: 1030px) {
-    width: 100%;
-    float: left;
-    padding: 0.5rem;
-  }
 }
 
   #{$tags} {
     width: 100%;
+    // Media query for desktop
+    @media only screen and (min-width: 1030px) {
+      width: 100%;
+      float: left;
+      padding: 0.5rem;
+    }
+
     .aa-suggestion:first-of-type,
     .aa-suggestion {
       border: 0px;
@@ -381,25 +458,14 @@ $border-color: #eaeaea;
     .aa-suggestion.aa-cursor {
       background-color: transparent;
     }
-    .aa-suggestions .aa-suggestion {
-      display: inline-block;
-      border: none;
-      padding: 0;
-      float: left;
-    }
+
     // Se flere produkter-knapp on tags
     .button-more-products {
       float: left;
-      padding: 0.45rem 0.75rem;
+      padding: 0.75rem 1rem;
       font-size: 0.875rem;
       line-height: 140%;
       margin-top: 0;
-    }
-    // Media query for desktop
-    @media only screen and (min-width: 1030px) {
-      width: 100%;
-      float: left;
-      padding: 0.5rem;
     }
     .autocomplete-header {
       margin-left: 0;
@@ -408,10 +474,9 @@ $border-color: #eaeaea;
       padding: 0.25rem 0.5rem;
       display: block;
     }
-    .wrapper-suggestion-link {
-      padding: 0.15rem 0.5rem 0.25rem 0.5rem;
-      margin-bottom: 0.75rem;
-    }
+
+    .wrapper-suggestion-link {}
+
   }
 
   .title-element {
@@ -427,12 +492,12 @@ $border-color: #eaeaea;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
-    .test {
-      color: black;
-    }
   }
 
   .aa-dropdown-menu {
+    @media ( max-width: 460px ) {
+      width: calc(100% - 2rem) !important; // important important important
+    }
     width: 96% !important;
     position: absolute !important; /* Stay in place */
     background-color: #fff;
@@ -441,10 +506,10 @@ $border-color: #eaeaea;
 
   .aa-dropdown-menu-inner{
     width: 100%;
-    max-width: 1240px;
+    padding: 1rem;
     margin-left: auto;
     margin-right: auto;
-    border:0px !important;
+    border: 0px !important;
     position: relative !important;
     background-color: #fff;
   }
@@ -620,18 +685,6 @@ body .thinner {
   color: #333333;
 }
 
-// wraps each tag
-.wrapper-suggestion-link {
-  background-color: #eaeaea;
-  padding: 0.5rem;
-  border-radius: 1.25rem;
-  margin: 0 0.5rem 0 0;
-  display: inline-block;
-  &:hover {
-    background-color: darken(#eaeaea, 3%);
-  }
-}
-
 .suggestion-post-content {
   margin-bottom: 0;
 }
@@ -650,35 +703,6 @@ body .thinner {
 .wrapper-autocomplete-post-suggestion {
   background-color: #eaeaea;
 }
-
-/* For mobile phones and tablets only */
-@media only screen and (max-width: 1029px) {
-  .aa-dropdown-menu {
-    min-width: inherit;
-    max-width: inherit;
-    width: 70%;
-  }
-  .r-wrapper {
-    float:none;
-    margin: 0 1rem 1rem 1rem;
-  }
-}
-
-/* Media query for desktop */
-@media only screen and (min-width: 1030px) {
-  #{$products} .aa-suggestions {
-    width: 100%;
-  }
-    // this wrapper contains posts and tags
-    .r-wrapper {
-      float:left;
-      width: 50%;
-    }
-    .aa-dropdown-menu .autocomplete-header {
-      margin-left: 0;
-    }
-  }
-
 
 .searchsubmit.closeable {
     background-image: url('../img/search-close.png');
@@ -723,21 +747,18 @@ body .thinner {
   .button-more-products {
       position: absolute;
       z-index: 10;
-      bottom: 0.5em;
+      bottom: 0;
       left: 29%;
       width: 50%;
       // button width and button positioning in mobile and tablet
       @media only screen and (max-width: 1029px) {
         width: 62%;
         left: 18%;
-        bottom: -0.5em;
       }
   }
   @media only screen and (max-width: 1029px) {
     position: absolute;
     z-index: 10;
-    bottom: 1.5em;
-    // left: 10%;
     width: 80%;
   }
 }

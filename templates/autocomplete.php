@@ -219,9 +219,16 @@
             /* Configure tether */
             var $menu = $autocomplete.find('.aa-dropdown-menu');
 
+            var placement;
+            if ( $searchInput.closest('.w').length ) {
+                placement = $searchInput.closest('.w');
+            } else {
+                placement = $searchInput.closest('.header');
+            }
+
             var config = {
               element: $menu,
-              target: this,
+              target: placement,
               attachment: 'top left',
               targetAttachment: 'bottom left',
             };
@@ -273,7 +280,7 @@
                 if ( $searchInput.closest('.w').length ) {
                     dropdownMinWidth = $searchInput.closest('.w').width();
                 } else {
-                    dropdownMinWidth = jQuery('body').width();
+                    dropdownMinWidth = $searchInput.closest('.header').width();
                 }
 
                 $menu.css( 'width', dropdownMinWidth );

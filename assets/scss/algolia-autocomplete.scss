@@ -7,7 +7,9 @@ $first_column: '.aa-dropdown-menu-inner > [class^="aa-dataset"]';
 // Products, tags & posts
 $products: 'a.suggestion-link.product';
 $posts: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post';
-$tags: '.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post)';
+
+// If there is no post type, then it's a tag, tags return false for postType
+$tags: '.style__false ~ .aa-suggestions';
 
 
 /**
@@ -62,13 +64,15 @@ $border-color: #eaeaea;
 
 /* Layout */
 
+// First column on the left, usually products
 #{$first_column} {
   width: 100%;
   @media ( min-width: 768px ) {
     @include span( 6, 12, 1.5rem );
   }
 }
-
+// Wrapper on the right for tags and posts
+// the only second column.
 .r-wrapper{
   width: 100%;
   @media ( min-width: 768px ) {
@@ -78,17 +82,13 @@ $border-color: #eaeaea;
 
 /* Type styles */
 
-// Products
-#{$first_column} > div.aa-suggestion {
+// Products...
+#{$first_column} > div.aa-suggestion {}
 
-}
+// Posts...
+#{$posts}{}
 
-// Posts
-#{$posts}{
-
-}
-
-// Tags
+// Tags are everything non-postType related.
 #{$tags} {
   div.aa-suggestion{
     background-color: #eaeaea;

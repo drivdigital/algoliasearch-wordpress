@@ -41,7 +41,7 @@ so these variables help show which class is what thing */
       float: left; } }
 
 /* Type styles */
-.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) div.aa-suggestion {
+.style__false ~ .aa-suggestions div.aa-suggestion {
   background-color: #eaeaea;
   float: left;
   display: inline-block;
@@ -50,7 +50,7 @@ so these variables help show which class is what thing */
   padding: 0.5rem;
   margin: 0 0.5rem 0 0;
   border-radius: 1.25rem; }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) div.aa-suggestion:hover {
+  .style__false ~ .aa-suggestions div.aa-suggestion:hover {
     background-color: #e2e2e2; }
 
 .wrapper-toggle-view-buttons {
@@ -263,27 +263,27 @@ so these variables help show which class is what thing */
   .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"].post .aa-suggestions .aa-suggestion {
     padding: 1.5rem 1.25rem 1.5rem 1.25rem; }
 
-.aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) {
+.style__false ~ .aa-suggestions {
   width: 100%; }
   @media only screen and (min-width: 1030px) {
-    .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) {
+    .style__false ~ .aa-suggestions {
       width: 100%;
       float: left;
       padding: 0.5rem; } }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion:first-of-type,
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion {
+  .style__false ~ .aa-suggestions .aa-suggestion:first-of-type,
+  .style__false ~ .aa-suggestions .aa-suggestion {
     border: 0px; }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .aa-suggestion.aa-cursor {
+  .style__false ~ .aa-suggestions .aa-suggestion.aa-cursor {
     background-color: transparent; }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .button-more-products {
+  .style__false ~ .aa-suggestions .button-more-products {
     float: left;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     line-height: 140%;
     margin-top: 0; }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .autocomplete-header {
+  .style__false ~ .aa-suggestions .autocomplete-header {
     margin-left: 0; }
-  .aa-dropdown-menu-inner > .r-wrapper > [class^="aa-dataset"]:not(.post) .wrapper-suggestion-link .suggestion-link {
+  .style__false ~ .aa-suggestions .wrapper-suggestion-link .suggestion-link {
     padding: 0.25rem 0.5rem;
     display: block; }
 
@@ -301,6 +301,7 @@ so these variables help show which class is what thing */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35); }
 
 .aa-dropdown-menu {
+  max-width: 96%;
   position: absolute !important;
   /* Stay in place */
   background-color: #fff;

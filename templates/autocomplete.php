@@ -10,7 +10,6 @@
     <#
     var gridlist = "";
     jQuery(data.wrapperClass).addClass(data.view);
-    <!-- console.log(data.postType); -->
     if (data.postType === "product") {
         if (data.view=='grid') {
             jQuery("body").addClass("algoliasearch-grid");
@@ -26,6 +25,7 @@
 <div><h2 class="autocomplete-header-title {{{ typeClass }}}" data-more-url="{{{ data.moreUrl }}}"><?php esc_html_e( 'Results for', 'driv_algolia' ); ?> <span class="title-element">{{{ data.label }}}</span> <span class="thinner">{{{ data.count }}}<span></h2></div>
 <div class="clear"></div>
 </div>
+<div class="style__{{{ data.postType }}}"></div>
 </script>
 
 <script type="text/html" id="tmpl-autocomplete-post-suggestion">
@@ -189,7 +189,6 @@
         jQuery("input[name='s']:not('.no-autocomplete')").each(function(i) {
             var $searchInput = jQuery(this);
 
-
             var config = {
                 debug: algolia.debug,
                 hint: false,
@@ -219,13 +218,15 @@
             /* Configure tether */
             var $menu = $autocomplete.find('.aa-dropdown-menu');
 
+            // We place algolia at the bottom of the parent of the search form.
+            // this is a w or a header class based element
             var placement;
             if ( $searchInput.closest('.w').length ) {
                 placement = $searchInput.closest('.w');
             } else {
                 placement = $searchInput.closest('.header');
             }
-
+            // Placement of the search results
             var config = {
               element: $menu,
               target: placement,

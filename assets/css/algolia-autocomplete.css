@@ -477,6 +477,10 @@ body .thinner {
   background-image: url("../img/search-close.png");
   background-image: url("../img/search-close.svg"); }
 
+.autocomplete-empty-product .panel {
+  border-top: 0;
+  width: 100%; }
+
 .panel.borders {
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;

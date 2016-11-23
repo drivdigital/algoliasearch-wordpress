@@ -301,14 +301,10 @@ so these variables help show which class is what thing */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.35); }
 
 .aa-dropdown-menu {
-  width: 96% !important;
   position: absolute !important;
   /* Stay in place */
   background-color: #fff;
   overflow-x: hidden; }
-  @media (max-width: 460px) {
-    .aa-dropdown-menu {
-      width: calc(100% - 2rem) !important; } }
 
 .aa-dropdown-menu-inner {
   width: 100%;

@@ -265,14 +265,18 @@
             $menu.css('z-index', '99999');
 
             /* Makes dropdown match the input size. */
-            var dropdownMinWidth = 200;
             function updateDropdownWidth() {
-                var inputWidth = $searchInput.outerWidth();
-                if (inputWidth >= dropdownMinWidth) {
-                    $menu.css('width', $searchInput.outerWidth());
+                // Closest 'w' class to determine the full width
+                // however, .w may not exist
+                var dropdownMinWidth;
+
+                if ( $searchInput.closest('.w').length ) {
+                    dropdownMinWidth = $searchInput.closest('.w').width();
                 } else {
-                    $menu.css('width', dropdownMinWidth);
+                    dropdownMinWidth = jQuery('body').width();
                 }
+
+                $menu.css( 'width', dropdownMinWidth );
                 tether.position();
             }
             jQuery(window).on('resize', updateDropdownWidth);

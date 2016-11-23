@@ -495,10 +495,7 @@ $border-color: #eaeaea;
   }
 
   .aa-dropdown-menu {
-    @media ( max-width: 460px ) {
-      width: calc(100% - 2rem) !important; // important important important
-    }
-    width: 96% !important;
+    max-width: 96%;
     position: absolute !important; /* Stay in place */
     background-color: #fff;
     overflow-x: hidden;

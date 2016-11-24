@@ -186,7 +186,7 @@
         });
 
         /* Setup dropdown menus */
-        jQuery("input[name='s']:not('.no-autocomplete')").each(function(i) {
+        jQuery(".header input[name='s']:not('.no-autocomplete')").each(function(i) {
             var $searchInput = jQuery(this);
 
             var config = {

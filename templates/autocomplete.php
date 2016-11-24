@@ -161,7 +161,7 @@
                     header: function(query, args) {
                         if (args.nbHits==0 && (typeof drivAlgoliaSettings[config['index_id']] === 'undefined' || drivAlgoliaSettings[config['index_id']].empty_view!=='product')) return;
                         type = config['index_id'].replace('posts_', '').replace('terms_', '');
-                        moreUrl = (parseInt(args.nbHits) > parseInt(args.hitsPerPage)) ? '/?s=' + query.query + '&post_types=' + type : '';
+                        moreUrl = (parseInt(args.nbHits) > parseInt(args.hitsPerPage)) ? '/?s=' + query.query + '&post_type=' + type : '';
                         view = getDefaultAlgoliaSuggestionView(config['index_id']);
                         postType = (args.nbHits>0 && typeof args.hits[0].post_type !== 'undefined') ? args.hits[0].post_type : false;
                         return wp.template('autocomplete-header')({

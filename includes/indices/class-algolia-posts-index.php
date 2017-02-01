@@ -146,6 +146,8 @@ final class Algolia_Posts_Index extends Algolia_Index
 
         if ($_product = wc_get_product( $post->ID )) {
             $shared_attributes['price2'] = $_product->get_price_html(); //$post->menu_order;
+            $shared_attributes['full_price'] = $_product->get_regular_price(); //$post->menu_order;
+            $shared_attributes['display_price'] =$_product->get_display_price( $_product->get_regular_price() ); //$post->menu_order;
         }
 
         $author = get_userdata( $post->post_author );

@@ -51,7 +51,7 @@
                     }
                 }
                 if(data.post_type == "product") {
-                price_content = '<p class="suggestion-post-price">' + data.price2 + '</p>';
+                price_content = '<p class="suggestion-post-price">' + data.display_price.toLocaleString('nb-NO', { style: 'currency', currency: 'NOK' }) + '</p>';
             }
             #>
             <p class="suggestion-post-content">{{{ relevant_content }}}</p>
